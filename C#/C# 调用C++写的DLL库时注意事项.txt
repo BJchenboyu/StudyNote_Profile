@@ -1,0 +1,20 @@
+格式[DLlImport("动态库名称","属性配置")]
+public static extern + 函数名
+
+注意参数类型上的对应，C++与C#参数类型的区别
+
+例如：
+C++ code:
+extern "C" _declspec(dllexport) bool __stdcall Inverse(const int sz, double srcMatrixElements[], double invMatrixElements[])
+{
+	//add code here
+}
+C# code 
+[DllImport("CMatrix", CallingConvention = CallingConvention.StdCall)]
+public static extern bool Inverse(int sz, double[] matrixElements, double[] invMatrixElements);
+
+Inverse(sz, matA.elements, inv.elements);
+
+
+
+

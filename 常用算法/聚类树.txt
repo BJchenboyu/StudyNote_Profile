@@ -1,0 +1,4 @@
+X=[1 4 7 8 9]'
+Y=pdist(X)%求距离
+Z=linkage(Y)%生成聚类的树
+dendrogram(Z)%画树

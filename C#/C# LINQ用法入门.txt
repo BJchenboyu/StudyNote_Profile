@@ -1,0 +1,4 @@
+LINQ : Language Integrated Query 即语言集成查询
+
+操作类似于数据库操作。
+查询 from ... where ... select...

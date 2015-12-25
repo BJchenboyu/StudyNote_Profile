@@ -1,0 +1,32 @@
+
+Profinet 西门子工业网 
+
+1.PPI通信协议(Point to Point Interface) 专为S7200开发的通信协议
+主从设备协议 
+
+2.MPI通信协议(Multi Point Interface）
+
+3.自由通信协议   用户可通过编程编制自己的通信协议
+
+4.Profibus通信协议 西门子的现场总线通信协议 一个主站多个I/O从站 
+一个从站被主站拥有后不能被其他主站拥有
+
+
+
+6.ASI通信协议 Actuator-Sensor Interface 传感器执行器总线
+
+
+CP通信处理器
+
+
+机架 第几个导轨
+槽号，导轨上第几个
+
+
+
+
+
+
+
+
+

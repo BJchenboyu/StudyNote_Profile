@@ -1,0 +1,3 @@
+
+            //多线程操作，允许跨线程调用
+            System.Windows.Forms.Control.CheckForIllegalCrossThreadCalls = false;

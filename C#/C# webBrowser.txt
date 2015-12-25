@@ -1,0 +1,37 @@
+【C#学习笔记】webBrowser1_DocumentCompleted不停被调用
+分类： 【C#学习笔记】 2012-09-06 14:02 1837人阅读 评论(0) 收藏 举报
+webbrowserc#框架文档
+关于DocumentCompleted事件，MSDN给出的解释是在文档加载完毕后执行，但是在我的程序中DocumentCompleted却被多次调用，查了一下资料，大概出现了以下几种情况。 
+
+
+1、WebBrowser载入一个页面后DocumentCompleted事件会执行两次，但这两次的ReadyState状态不一样，分别是Intercative和Complete。而MSDN对这两种状态值的解释是：Complete该控件已完成新文档及其所有内容的加载；Interactive该控件已经加载足够的文档以允许有限的用户交互，比如单击已显示的超链接。由此可见，实际上DocumentCompleted事件会在Interactive状态和Complete状态各调用一次，那么我们可以根据我们的需要来判断到底需要那一次。解决办法实例代码如下： 
+if(webBrowser1.ReadyState!=WebBrowerReadyState.Complete) 
+    return; 
+但是当一个网页含有多个框架的时候，就可能多次触发DocumentCompleted事件且WebBrowerReadyState.Complete，可行的解决方案是：SHDocVw.WebBrowser m_wb = webBrowser.ActiveXInstance as SHDocVw.WebBrowser;利用SHDocVw.WebBrowser的DocumentCompleted事件只会触发一次。
+
+
+2、如果一个页面中含有多个框架页，那么在每个框架页加载完成时也可能触发一次DocumentCompleted事件（MSDN对其解释是在多个的帧的情况下DocumentComplete获取触发多次。并非每个框架将触发此事件，但触发DownloadBegin事件的每个框架将触发相应的DocumentComplete事件）。这种情况下解决办法实例代码如下： 
+
+
+if(e.Url.ToString()!=webBrowser1.Url.ToString()) 
+    return; 
+
+此外，MSDN给出了另外一种方案，详见： 
+
+3、对于以上两种情况我是没遇到，却碰到了第三种情况：在我的DocumentCompleted事件里执行了相应的代码，结果又触发了一次DocumentCompleted事件，如此循环往复，没完没了。使用webBrowser1.Stop()，还是没法停止。webBrowser1.Nagviate("about:blank")问题还是依旧。这时候我们只能卸载DocumentCompleted事件了，即在DocumentCompleted事件里执行完你需要的代码后，再来一句： 
+
+webBrowser1.DocumentCompleted -= new WebBrowserDocumentCompletedEventHandler
+
+文档刷新只重新加载当前页，因此在调用 Refresh 方法时不会发生 Navigating、 Navigated 和 DocumentCompleted 事件。 
+ 
+
+
+
+
+
+
+
+
+
+
+(webBrowser1_DocumentCompleted); 

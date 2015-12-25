@@ -1,0 +1,41 @@
+线程类thread
+创建线程：thread t(functionname,para1,para2,...)
+启动线程：t.join();
+从主线程中独立出来：t.detach();
+C++11的线程不抛出异常
+
+
+互斥体:mutex 
+
+没有独立的读写锁，需要自己实现
+可行的方案，借助mutex
+read_lock() {
+  mutex.lock();
+  while (writer)
+    unlocked.wait(mutex);
+  readers++;
+  mutex.unlock();
+}
+
+read_unlock() {
+  mutex.lock();
+  readers--;
+  if (readers == 0)
+    unlocked.signal_all();
+  mutex.unlock();
+}
+
+write_lock() {
+  mutex.lock();
+  while (writer || (readers > 0))
+    unlocked.wait(mutex);
+  writer = true;
+  mutex.unlock();
+}
+
+write_unlock() {
+  mutex.lock();
+  writer = false;
+  unlocked.signal_all();
+  mutex.unlock();
+}

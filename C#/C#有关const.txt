@@ -1,0 +1,2 @@
+char数组生成字符串用string str=new string(ch);
+如果用ch.toString()则字符串为空。

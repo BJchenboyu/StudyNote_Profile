@@ -1,0 +1,5 @@
+如果出现与关键字相同，可能出错，处理方法：在名字上加[]
+字符串需用‘’包含起来
+用excutenonquery语句执行select语句无意义
+textbox将passWordchar属性设置为非空字符则不显示，设为‘\0’则正常显示
+sqldataadpter.fill(dataset)方法会将查询的结果添加到末尾，出现重复行，删除行？，用主键？

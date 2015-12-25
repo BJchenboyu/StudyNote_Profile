@@ -1,0 +1,11 @@
+
+
+
+git checkout 切换分支或者
+Git会告诉你，git checkout -- file（中间有空格）可以丢弃工作区的修改，撤销修改到暂存区的状态，即最近一次add 或者commit
+
+
+git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。
+
+用命令git rm删掉文件即使使用文件资源管理器删除的还是用git rm 删除一遍，
+误删除的可以用checkout恢复

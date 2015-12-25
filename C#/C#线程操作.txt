@@ -1,0 +1,1 @@
+System.Windows.Forms.Control.CheckForIllegalCrossThreadCalls = false;//允许线程访问不是它创建的控件

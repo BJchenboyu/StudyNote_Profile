@@ -1,0 +1,23 @@
+/// <summary>  
+/// 返回指定WebBrowser中图片<IMG></IMG>中的图内容  
+/// </summary>  
+/// <param name="WebCtl">WebBrowser控件</param>  
+/// <param name="ImgeTag">IMG元素</param>  
+/// <returns>IMG对象</returns>  
+private Image GetWebImage(WebBrowser WebCtl, HtmlElement ImgeTag)  
+{  
+    HTMLDocument doc = (HTMLDocument)WebCtl.Document.DomDocument;  
+    HTMLBody body = (HTMLBody)doc.body;  
+    IHTMLControlRange rang = (IHTMLControlRange)body.createControlRange();  
+    IHTMLControlElement Img = (IHTMLControlElement)ImgeTag.DomElement; //图片地址  
+    Image oldImage = Clipboard.GetImage();  
+    rang.add(Img);  
+    rang.execCommand("Copy", false, null);  //拷贝到内存  
+    Image numImage = Clipboard.GetImage();  
+    try  
+    {  
+        Clipboard.SetImage(oldImage);  
+    }  
+    catch {}  
+    return numImage;  
+}  

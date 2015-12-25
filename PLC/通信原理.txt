@@ -1,0 +1,11 @@
+RS 	Recommended Standard 推荐标准
+DTE 	Data Terminal Equipment
+DCE	Data Communication Equipment
+
+RS-232C	距离小于15m 单发单接
+
+
+RS-422	
+
+
+RS-485	单发多接 最远1219m

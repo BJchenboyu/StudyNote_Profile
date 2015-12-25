@@ -1,0 +1,14 @@
+线程同步主要：
+  
+线程同步，避免互锁和
+
+实现用以下几个方式：
+Mutex 互斥体
+
+
+Monitor监视器  
+Monitor.Enter() 获取对象锁
+Monitor.Exit() 释放对象锁
+
+
+Lock 锁
